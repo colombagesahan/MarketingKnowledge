@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendly Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        #chat-box { width: 100%; max-width: 400px; background: white; border-radius: 10px; padding: 20px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        #messages { height: 400px; overflow-y: scroll; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .msg { margin-bottom: 15px; padding: 10px; border-radius: 10px; width: fit-content; max-width: 80%; }
+        .user-msg { background: #dcf8c6; margin-left: auto; text-align: right; }
+        .ai-msg { background: #eee; margin-right: auto; text-align: left; }
+        input { width: 75%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        button { width: 20%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="chat-box">
+        <div id="messages"></div>
+        <div style="display: flex; justify-content: space-between;">
+            <input type="text" id="userInput" placeholder="ඔබේ පණිවිඩය ටයිප් කරන්න...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
