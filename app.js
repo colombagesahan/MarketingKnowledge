@@ -56,7 +56,7 @@ async function sendMessage() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "google/gemini-2.0-flash:free", // මුදල් අය නොවන Free AI Model එකක් භාවිත කර ඇත
+                model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free", // මුදල් අය නොවන Free AI Model එකක් භාවිත කර ඇත
                 messages: [
                     { role: "system", content: systemPrompt },
                     { role: "user", content: message }
