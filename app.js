@@ -58,7 +58,7 @@ async function sendMessage() {
             },
             body: JSON.stringify({
                 // 👇 ඔයා ඉල්ලපු අලුත් Venice Uncensored AI Model එක
-                model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free", 
+                model: "meta-llama/llama-3-8b-instruct:free", 
                 messages: [
                     { role: "system", content: systemPrompt },
                     { role: "user", content: message }
