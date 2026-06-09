@@ -58,7 +58,7 @@ async function sendMessage() {
             },
             body: JSON.stringify({
                 // 👇 ඔයා ඉල්ලපු අලුත් Venice Uncensored AI Model එක
-                model: "gryphe/mythomax-l2-13b:free", 
+                model: "gryphe/mythomax-l2-13b", 
                 messages: [
                     { role: "system", content: systemPrompt },
                     { role: "user", content: message }
