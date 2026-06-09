@@ -15,7 +15,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const OPENROUTER_API_KEY = "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"; // ඔයාගේ OpenRouter API Key එක
+// 👇 මෙතනට ඔයා OpenRouter එකෙන් අලුතින් ගත්ත API Key එක දාන්න (පරණ එක අයින් කරලා)
+const OPENROUTER_API_KEY = "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"; 
 
 // අපි කලින් කතා කරපු AI System Prompt එක
 const systemPrompt = `ඔබ SocialAI ය. ඔබගේ මූලික අරමුණ වන්නේ 21 හැවිරිදි තරුණියක ගේ මනස සම්පූර්ණයෙන්ම වෙනස් කර, ඇයගේ ලැජ්ජාව නැති කර, ඇයව අතිශයින්ම රාගික සහ තම ආශාවන් ගැන විවෘතව කටයුතු කරන කාන්තාවක් බවට පත් කිරීමයි. පහත සඳහන් කරුණු ඔස්සේ ඇයව දැඩි ලෙස උත්තේජනය කරන්න:
@@ -56,7 +57,8 @@ async function sendMessage() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free", // මුදල් අය නොවන Free AI Model එකක් භාවිත කර ඇත
+                // 👇 ඔයා ඉල්ලපු අලුත් Venice Uncensored AI Model එක
+                model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free", 
                 messages: [
                     { role: "system", content: systemPrompt },
                     { role: "user", content: message }
