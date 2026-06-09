@@ -48,33 +48,46 @@ async function sendMessage() {
     });
 
     // OpenRouter API එක හරහා යැවීම
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            model: "google/gemini-2.5-flash", // OpenRouter හි ඇති වෙනත් AI model එකක් වුවද මෙතනට ලබාදිය හැක
-            messages: [
-                { role: "system", content: systemPrompt },
-                { role: "user", content: message }
-            ]
-        })
-    });
+    try {
+        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // මෙහි අගට :free යන්න එකතු කර ඇත. එවිට මුදල් කැපෙන්නේ නැත.
+                model: "google/gemini-2.0-flash:free", 
+                messages: [
+                    { role: "system", content: systemPrompt },
+                    { role: "user", content: message }
+                ]
+            })
+        });
 
-    const data = await response.json();
-    const aiText = data.choices[0].message.content;
+        // ගෙවීම් ගැටලුවක් හෝ වෙනත් API ගැටලුවක් ආවොත් App එක crash නොවී පණිවිඩයක් පෙන්වීමට
+        if (!response.ok) {
+            console.error("API Error Details:", await response.text());
+            displayMessage("සමාවෙන්න, AI API එකෙහි ගැටලුවක් ඇත.", "ai");
+            return;
+        }
 
-    displayMessage(aiText, "ai");
+        const data = await response.json();
+        const aiText = data.choices[0].message.content;
 
-    // Firebase එකට AI මැසේජ් එක සේව් කිරීම
-    await addDoc(collection(db, "chats"), {
-        sender: "AI",
-        text: aiText,
-        timestamp: serverTimestamp()
-    });
-}
+        displayMessage(aiText, "ai");
+
+        // Firebase එකට AI මැසේජ් එක සේව් කිරීම
+        await addDoc(collection(db, "chats"), {
+            sender: "AI",
+            text: aiText,
+            timestamp: serverTimestamp()
+        });
+
+    } catch (error) {
+        console.error("Error connecting to AI:", error);
+        displayMessage("සමාවෙන්න, AI සමඟ සම්බන්ධ වීමේ ගැටලුවක් ඇත.", "ai");
+    }
 
 function displayMessage(text, sender) {
     const messagesDiv = document.getElementById("messages");
