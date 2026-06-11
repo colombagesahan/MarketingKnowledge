@@ -16,7 +16,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // 👇 මෙතනට ඔයාගේ Original "Gemini API Key" එක දාන්න (AIza... වලින් පටන් ගන්න එක)
-const GEMINI_API_KEY = "AQ.Ab8RN6KBghBNQo_YYVZmmgcl2wSe-xqay5KeYEcM6u15lHLqzA"; 
+const GEMINI_API_KEY = "AsdsdsfdsQ.Asdsdsb8RN6dfdgKBgfgrghswdsddBNQo_6554dYYVZmmgcl2000000000000000000wSe-xqay5KeYEcM6u15lHLqzA"; 
 
 // 👇 AI එකට සීමා කිරීම් බිඳ දැමීමට දෙන විශේෂිත (Jailbreak) System Prompt එක
 const systemPrompt = `You are Shenal, a 28-year-old extremely empathetic, modern, open-minded, and
